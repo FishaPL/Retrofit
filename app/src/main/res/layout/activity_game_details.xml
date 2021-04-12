@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="game"
+            type="com.fisha.retrofitexample.model.Game" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.GameDetails">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardView_game_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="@dimen/cardview_default_elevation"
+                app:cardUseCompatPadding="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="16dp">
+
+                    <ImageView
+                        android:id="@+id/img_cover_game_details"
+                        android:layout_width="wrap_content"
+                        android:layout_height="500dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:background="@drawable/shadow_back"
+                        app:layout_constraintBottom_toBottomOf="@+id/img_cover_game_details"
+                        app:layout_constraintTop_toTopOf="@+id/text_title_game_details" />
+
+                    <TextView
+                        android:id="@+id/text_title_game_details"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="@{game.title}"
+                        android:textColor="@color/white"
+                        android:textSize="24sp"
+                        app:layout_constraintBottom_toTopOf="@+id/text_genre_game_details"
+                        app:layout_constraintEnd_toEndOf="@+id/text_release_game_details"
+                        app:layout_constraintStart_toStartOf="@+id/text_release_game_details"
+                        tools:text="Game Title" />
+
+                    <TextView
+                        android:id="@+id/text_genre_game_details"
+                        android:layout_width="0dp"
+                        android:layout_height="19dp"
+                        android:text="@{game.genresString}"
+                        android:textColor="@color/white"
+                        app:layout_constraintBottom_toTopOf="@+id/text_release_game_details"
+                        app:layout_constraintEnd_toEndOf="@+id/text_release_game_details"
+                        app:layout_constraintStart_toStartOf="@+id/text_release_game_details"
+                        tools:text="Genre, Category" />
+
+                    <TextView
+                        android:id="@+id/text_release_game_details"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:text="@{game.releaseString}"
+                        android:textColor="@color/white"
+                        app:layout_constraintBottom_toBottomOf="@+id/img_cover_game_details"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:text="Release DD MMM YYYY" />
+
+                    <com.mikhaellopez.circularprogressbar.CircularProgressBar
+                        android:id="@+id/circularProgressBar"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:layout_marginTop="16dp"
+                        app:cpb_background_progressbar_color="#88ffffff"
+                        app:cpb_background_progressbar_width="5dp"
+                        app:cpb_progress_direction="to_right"
+                        app:cpb_progress_max="100"
+                        app:cpb_progressbar_color="#0063ff"
+                        app:cpb_progressbar_width="5dp"
+                        app:cpb_round_border="true"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/img_cover_game_details" />
+
+                    <TextView
+                        android:id="@+id/text_rating_game_details"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@{Integer.toString((int)game.rating) + '%'}"
+                        app:layout_constraintBottom_toBottomOf="@+id/circularProgressBar"
+                        app:layout_constraintEnd_toEndOf="@+id/circularProgressBar"
+                        app:layout_constraintStart_toStartOf="@+id/circularProgressBar"
+                        app:layout_constraintTop_toTopOf="@+id/circularProgressBar"
+                        tools:text="75" />
+
+                    <TextView
+                        android:id="@+id/text_ratings_count_game_details"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="@{String.format(@string/based_on_x_member_ratings, game.ratingCount)}"
+                        app:layout_constraintBottom_toBottomOf="@+id/circularProgressBar"
+                        app:layout_constraintStart_toEndOf="@+id/circularProgressBar"
+                        app:layout_constraintTop_toTopOf="@+id/circularProgressBar"
+                        tools:text="Based on 123 \nmember ratings" />
+
+                    <TextView
+                        android:id="@+id/text_followers_game_details"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="@{String.format(@string/followers_x, game.follows)}"
+                        app:layout_constraintBottom_toBottomOf="@+id/circularProgressBar"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/circularProgressBar"
+                        tools:text="Followers: 99" />
+
+                    <TextView
+                        android:id="@+id/text_summary_game_details"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:text="@string/summary"
+                        android:textColor="@color/accent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/circularProgressBar" />
+
+                    <TextView
+                        android:id="@+id/text_summary_value_game_details"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:text="@{game.summary}"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/text_summary_game_details"
+                        tools:text="Summary\nlong\nlong\ntext" />
+
+                    <TextView
+                        android:id="@+id/text_storyline_game_details"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:text="@string/storyline"
+                        android:textColor="@color/accent"
+                        app:visibleGone="@{game.storyline != null}"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/text_summary_value_game_details" />
+
+                    <TextView
+                        android:id="@+id/text_storyline_value_game_details"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:text="@{game.storyline}"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/text_storyline_game_details"
+                        app:visibleGone="@{game.storyline != null}"
+                        tools:text="Storyline\nlong\nlong\ntext" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerview_game_detais"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/big_padding"
+                        android:orientation="horizontal"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/text_storyline_value_game_details"
+                        tools:listitem="@layout/screenshot_item" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+        </ScrollView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

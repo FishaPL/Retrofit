@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">PS4/PS5 Games</string>
+    <string name="search_games_dots">Search games…</string>
+    <string name="based_on_x_member_ratings">Based on %1$d\nmember ratings</string>
+    <string name="followers_x">Followers: %1$d</string>
+    <string name="summary">Summary</string>
+    <string name="storyline">Storyline</string>
+</resources>
