@@ -1,6 +1,13 @@
 # Retrofit
 Retrofit application that uses the API to communicate with the IGDB website
 
+Using:
+- Retrofit, Retrofit Converter GSON
+- Lifecycle components (ViewModel, LiveData)
+- Glide (https://github.com/bumptech/glide)
+- CircularProgressBar (https://github.com/lopspower/CircularProgressBar)
+- Subsampling Scale Image View (https://github.com/davemorrissey/subsampling-scale-image-view)
+
 It is necessary to add CLIENT_ID and TOKEN (from https://api-docs.igdb.com/#about)
 to remoteData/GameRetrofitService.java
 
