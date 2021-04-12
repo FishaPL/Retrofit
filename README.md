@@ -2,8 +2,9 @@
 Retrofit application that uses the API to communicate with the IGDB website
 
 Using:
+- MVVM
 - Retrofit, Retrofit Converter GSON
-- Lifecycle components (ViewModel, LiveData)
+- Android Jetpack (ViewModel, LiveData, Databinding)
 - Glide (https://github.com/bumptech/glide)
 - CircularProgressBar (https://github.com/lopspower/CircularProgressBar)
 - Subsampling Scale Image View (https://github.com/davemorrissey/subsampling-scale-image-view)
